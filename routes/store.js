@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { User }  = require('./../models/user');
 const { Store }  = require('./../models/store');
+const { sendNotice } = require('./../helpers/mailer');
 
 /* GET home page. */
 router.get('/:id', (req, res, next) => {
@@ -12,6 +13,28 @@ router.get('/:id', (req, res, next) => {
     })
     .catch((error) => console.log(error));
 });
+
+router.post('/:id', (req, res, next) => {
+  Store.findOne({_id: req.params.id})
+    .then((store) => {
+      // use mailgun to send body object, store, and list of emails under a store
+      // get list of emails under a store
+      let promises = [];
+      let emails  = [];
+      for (let i = 0; i < store.subscribers.length; i++) {
+        promises.push(User.findOne({_id: store.subscribers[i]}).then((user) => {
+          emails.push(user.email);
+        }))
+      }
+
+      Promise.all(promises).then(() => {
+        sendNotice(emails, store, req.body);
+        res.render('store/store', {store, completed: ' '});
+      });
+    })
+    .catch((error) => console.log(error));
+});
+
 
 router.get('/:id/edit', (req, res) => {
   Store.findOne({_id: req.params.id})

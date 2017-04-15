@@ -3,23 +3,40 @@
 <div class="container">
   <br>
   <a href="{{store._id}}/edit">
-    <button type="button" class="btn btn-block" style="cursor: pointer"name="button">Edit Profile</button>
+    <button type="button" class="btn btn-md float-right" style="cursor: pointer"name="button">Edit Profile</button>
   </a>
+  <br>
   <br>
   <h1 style="text-align: center">{{store.name}}</h1>
   <br>
 
   <br>
-  <h4 >Send a notification!</h4>
+  <h4>Send a notification!</h4>
   <hr>
-  <form class="" action="index.html" method="post">
+  <form class="" action="" method="post">
     <div class="form-group">
-      <label for="exampleTextarea">Update your subscribers:</label>
-      <small id="emailHelp" class="form-text text-muted" style="margin-top: -10px">Your notification will be sent via a text message</small>
-      <textarea class="form-control" id="exampleTextarea" rows="2"></textarea>
+      <label>Update your subscribers:</label>
+      <small class="form-text text-muted" style="margin-top: -10px">Your notification will be sent via text message and email</small>
+      <textarea class="form-control" id="exampleTextarea" name="description" placeholder="Enter Description..." rows="2"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-block" style="background-color: #EA0B8C" name="button">Send!</button>
+    <div class="form-group">
+      <label>Quantity:</label>
+      <small class="form-text text-muted" style="margin-top: -10px">How many items do you have?</small>
+      <input type="number" class="form-control" name="quantity" placeholder="Enter Quantity..." value="">
+    </div>
+
+    <div class="form-group">
+      <label>Enter start time:</label>
+      <input type="time" class="form-control" name="start_time" value="">
+    </div>
+    <div class="form-group">
+      <label>Enter end time:</label>
+      <input type="time" class="form-control" name="end_time" value="">
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-md" style="background-color: #EA0B8C; cursor: pointer" name="button">Send!</button>
   </form>
 
 </div>

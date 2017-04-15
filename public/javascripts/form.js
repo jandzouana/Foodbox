@@ -2,7 +2,7 @@ $( document ).ready(function() {
   console.log($('#types-hidden-tokens').text());
   $('#tokenfield').tokenfield({
     autocomplete: {
-      source: ['Halal', 'Kosher', 'Vegetarian', 'Vegan', 'Gluten-Free'],
+      source: ['Halal', 'Kosher', 'Vegetarian', 'Vegan', 'Gluten-Free', 'Bread', 'Meat', 'Chees', 'Fruit', 'Veggies', 'Sandwiches', 'Snacks', 'Drinks'],
 
       delay: 100
     },
