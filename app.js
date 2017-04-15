@@ -71,11 +71,13 @@ app.use(expressValidator({
 const requireStoreLogin = (req, res, next) => req.session.storeLoggedIn ? next() : res.redirect('/login');
 const requireUserLogin  = (req, res, next) => req.session.userLoggedIn  ? next() : res.redirect('/login');
 
+app.all('/stores/*', requireStoreLogin, (req, res, next) => next());
+app.all('/users/*', requireUserLogin,   (req, res, next) => next());
+
 app.use('/',       index);
 app.use('/login',  login);
 
 app.use('/users',  user);
-app.all('/stores/*', requireStoreLogin, (req, res, next) => next());
 
 app.use('/stores',  store);
 

@@ -1,11 +1,36 @@
 {{> navbar}}
 
+<div class="container store">
+    <table class="table table-responsive">
+    <thead style="display: none">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each stores}}
+        <tr>
+          <td>
+            <img src="{{this.image}}" class="rounded float-left store-image" width="100" height="100" alt="store_image">
+          </td>
+          <td style="padding-top: 40px">{{this.name}}</td>
+          <td style="padding-top: 40px">
+            <a href="/users/{{../user._id}}/stores/{{this._id}}">
+              <button type="button" class="btn btn-md" style="cursor: pointer" name="button">More Info</button>
+            </a>
+          </td>
+          <td style="padding-top: 40px">
+            <form class="" action="" method="post">
+              <input type="hidden" name="store_id" value="{{this._id}}">
+              <button type="submit" class="btn btn-md" style="cursor: pointer" name="button">Subscribe</button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
 
-{{#each stores}}
-  <div class="container store">
-    <img src="{{this.image}}" class="rounded float-left store-image" width="100" height="100" alt="store_image">
-    <p>{{this.name}}</p>
-    <button type="button" class="btn btn-md" name="button">More Info</button>
-    <button type="button" class="btn btn-md" name="button">Subscribe</button>
-  </div>
-{{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+{{> navbar}}
+
+<div class="container">
+  <br>
+  <h2 class="text-center">{{user.first_name}} {{user.last_name}}'s Profile</h2>
+  <hr>
+  <h5>Subscriptions</h5>
+  <table class="table">
+  <thead>
+    <tr>
+      <th style="width: 1000px">Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each stores}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>
+          <form class="" action="" method="post">
+            <input type="hidden" name="store_id" value="{{this._id}}">
+            <button type="submit" style="color: #FC1264; background: none; border: none; cursor: pointer">Remove</button>
+          </form>
+
+        </td>
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+</div>

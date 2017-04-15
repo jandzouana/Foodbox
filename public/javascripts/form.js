@@ -11,4 +11,6 @@ $( document ).ready(function() {
   });
 
   $("input[name='phone']").mask("(999) 999-9999");
+
+  $("input[name='address'").geocomplete();
 });
