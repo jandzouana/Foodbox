@@ -5,9 +5,11 @@ const Store = mongoose.model('Store', {
   address     : String,
   phone       : String,
   email       : String,
+  password    : String,
   info        : String,
-  food_type   : { type: Array, default: [] },
-  subscribers : { type: Array, default: [] },
+  image       : String,
+  food_types  : { type: Array, default: [] },
+  subscribers : { type: Array, default: [] }
 });
 
-module.exports { Store };
+module.exports = { Store };

@@ -8,6 +8,9 @@ const mongoose          = require('mongoose');
 const path              = require('path');
 
 const index             = require('./routes/index');
+const login             = require('./routes/login');
+const user              = require('./routes/user');
+const store              = require('./routes/store');
 
 const app = express();
 
@@ -64,7 +67,17 @@ app.use(expressValidator({
   }
 }));
 
-app.use('/', index);
+// Login Middleware
+const requireStoreLogin = (req, res, next) => req.session.storeLoggedIn ? next() : res.redirect('/login');
+const requireUserLogin  = (req, res, next) => req.session.userLoggedIn  ? next() : res.redirect('/login');
+
+app.use('/',       index);
+app.use('/login',  login);
+
+app.use('/users',  user);
+app.all('/stores/*', requireStoreLogin, (req, res, next) => next());
+
+app.use('/stores',  store);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

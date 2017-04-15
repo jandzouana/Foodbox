@@ -1,0 +1,11 @@
+{{> navbar}}
+
+
+{{#each stores}}
+  <div class="container store">
+    <img src="{{this.image}}" class="rounded float-left store-image" width="100" height="100" alt="store_image">
+    <p>{{this.name}}</p>
+    <button type="button" class="btn btn-md" name="button">More Info</button>
+    <button type="button" class="btn btn-md" name="button">Subscribe</button>
+  </div>
+{{/each}}

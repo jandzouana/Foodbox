@@ -1,8 +1,16 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+button {
+  background-color: #0275D8;
+  color: white;
 }
 
-a {
-  color: #00B7FF;
+.store {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #C5C4C9;
+}
+
+.store-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
 }
