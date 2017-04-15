@@ -4,6 +4,7 @@ const router = express.Router();
 const { User }  = require('./../models/user');
 const { Store }  = require('./../models/store');
 const { sendNotice } = require('./../helpers/mailer');
+const Twilio = require('./../helpers/twilio');
 
 /* GET home page. */
 router.get('/:id', (req, res, next) => {
@@ -21,13 +22,17 @@ router.post('/:id', (req, res, next) => {
       // get list of emails under a store
       let promises = [];
       let emails  = [];
+      let numbers = [];
+
       for (let i = 0; i < store.subscribers.length; i++) {
         promises.push(User.findOne({_id: store.subscribers[i]}).then((user) => {
           emails.push(user.email);
+          numbers.push(user.phone);
         }))
       }
 
       Promise.all(promises).then(() => {
+        Twilio.sendManyMessages(numbers, req.body, store, (error) => console.log(error));
         sendNotice(emails, store, req.body);
         res.render('store/store', {store, completed: ' '});
       });

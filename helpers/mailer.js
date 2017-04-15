@@ -39,7 +39,7 @@ var sendNotice = (emails, store, item) => {
 
   nodemailerMailgun.sendMail({
     from: 'notice@foodbox.com',
-      to: 'szier@scu.edu',
+      to: results,
     subject: `${store.name} has an update for you!`,
     'h:Reply-To': 'noreply@foodbox.com',
     template: 'notice_body',
