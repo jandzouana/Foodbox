@@ -13,6 +13,12 @@ router.get('/about-us', (req, res, next) => {
   res.render('about-us');
 });
 
+router.get('/providers', (req, res, next) => {
+  Store.find({})
+    .then((stores) => res.render('providers', {stores}))
+    .catch((error) => console.log(error));
+});
+
 router.get('/store-sign-up', (req, res, next) => {
   res.render('store-sign-up');
 });
@@ -50,6 +56,13 @@ router.post('/user-sign-up', (req, res, next) => {
 
 router.get('/success', (req, res) => {
   res.render('success');
+});
+
+router.post('/logout', (req, res) => {
+  req.session.storeLoggedIn = false;
+  req.session.userLoggedIn = false;
+
+  res.redirect('/');
 });
 
 module.exports = router;
