@@ -1,0 +1,44 @@
+{{> navbar }}
+
+<br>
+
+<style>
+    .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>
+
+<div class="container">
+  <h2 class="text-center">{{store.name}}</h2>
+  <hr>
+  <br>
+  <div class="row">
+    <div class="col-6">
+      <h5>More Info</h5>
+      <p>A bakery (a.k.a. baker's shop or bake shop) is an establishment that produces and sells flour-based food baked in an oven such as bread, cookies, cakes, pastries, and pies.[1] Some retail bakeries are also cafés, serving coffee and tea to customers who wish to consume the baked goods on the premises.</p>
+    </div>
+    <div class="col-6">
+      <form class="" action="/users/{{user._id}}" method="post">
+        <input type="hidden" name="store_id" value="{{store._id}}">
+        <button type="submit" class="btn btn-md float-right" style="cursor: pointer" name="button">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="google-maps">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.4266546857393!2d-122.3395904846896!3d37.52143867980634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f9fc8ea6baa85%3A0x122ebc3cc20a09e7!2s205+De+Anza+Blvd%2C+San+Mateo%2C+CA+94402!5e0!3m2!1sen!2sus!4v1492226059455" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script type="text/javascript">
+</script>
